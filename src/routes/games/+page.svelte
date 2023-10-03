@@ -27,14 +27,14 @@
 
     const game = {
       name: steamGameData.name,
-      url: addGameUrl,
+      steamLink: addGameUrl,
       votesTotal: 0
     }
     console.log(game)
 
     try {
       const record = await pb.collection("games").create(game);
-      const recordSteamGameData = await pb.collection("steam_game_data").create(steamGameData)
+      const recordSteamGameData = await pb.collection("steam_game_data").create({...steamGameData, game: record.id });
     } catch (error) {
       console.error(error);
     }
