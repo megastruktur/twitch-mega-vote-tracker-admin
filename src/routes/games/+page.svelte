@@ -25,14 +25,19 @@
     const gameAppId = getGameAppId(addGameUrl)
     const steamGameData = await getSteamGameData(gameAppId)
 
-    const steamGame = {
+    const game = {
       name: steamGameData.name,
       url: addGameUrl,
       votesTotal: 0
     }
-    console.log(steamGame)
+    console.log(game)
 
-    const record = await pb.collection("games").create(steamGame);
+    try {
+      const record = await pb.collection("games").create(game);
+      const recordSteamGameData = await pb.collection("steam_game_data").create(steamGameData)
+    } catch (error) {
+      console.error(error);
+    }
 
     addGameUrl = ""
   }
