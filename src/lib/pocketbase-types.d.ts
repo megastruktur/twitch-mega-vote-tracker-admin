@@ -2,6 +2,8 @@
 * This file was @generated using pocketbase-typegen
 */
 
+import type { Category, Genre } from "./types"
+
 export enum Collections {
 	Games = "games",
 	SteamGameData = "steam_game_data",
@@ -37,14 +39,20 @@ export type GamesRecord = {
 	name?: string
 	steamLink?: string
 	votesTotal?: number
+	expand?: {
+		"steam_game_data(game)": SteamGameDataRecord[]
+	}
 }
 
-export type SteamGameDataRecord<Tcategories = unknown, Tgenres = unknown> = {
-	categories?: null | Tcategories
+export type SteamGameDataRecord = {
+	categories?: Category[]
 	game?: RecordIdString
-	genres?: null | Tgenres
+	genres?: Genres[]
 	header_image?: string
 	short_description?: string
+	developers?: string[]
+	publishers?: string[]
+  screenshots: Screenshot[]
 }
 
 export type UsersRecord = {

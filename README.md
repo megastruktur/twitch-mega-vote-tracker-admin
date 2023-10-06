@@ -1,38 +1,20 @@
-# create-svelte
+# Mega Vote Tracker Twitch extension Admin page
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Description
+Admin area for the vote tracker Twitch extension.
 
-## Creating a project
+## Tech Spec
+- Sveltekit (https://kit.svelte.dev)
+- Pocketbase (https://pocketbase.io)
+- Skeleton (https://www.skeleton.dev)
+- CORS-container (https://github.com/imjacobclark/cors-container)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Notes
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+### Steam Web API Cors
+- Steam Web API won't allow you to access it from your client, so I've deployed a CORS proxy using Cors-container docker image (taken from github, `that's important` as the package on dockerhub is outdated and won't allow Access-Control-Allow-Origin setting)
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+### .env.local / .env
+PUBLIC_POCKETBASE_URL=
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+PUBLIC_CORS_PROXY_URL=
