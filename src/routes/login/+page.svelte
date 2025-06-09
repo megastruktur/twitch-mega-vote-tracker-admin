@@ -8,7 +8,7 @@
 
   async function login() {
     try {
-      const ad = await pb.admins.authWithPassword(email, password);
+      const ad = await pb.collection('_superusers').authWithPassword(email, password);
       currentUser.set(ad)
       goto("/games")
     }
